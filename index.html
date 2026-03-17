@@ -60,3 +60,744 @@ body {
 .header {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+.header-text h1 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--c-navy);
+  margin-bottom: 3px;
+}
+.header-text p { font-size: 12px; color: var(--text-muted); }
+.cork-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--c-navy);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@media (prefers-color-scheme: dark) {
+  .cork-badge { background: #2a3d6e; }
+}
+#progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+#progress-bar::-webkit-scrollbar { display: none; }
+.stage-pill { display: flex; align-items: center; flex-shrink: 0; }
+.pill-label {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 13px;
+  border-radius: 20px;
+  background: var(--bg2);
+  color: var(--text-muted);
+  border: 0.5px solid var(--border);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.pill-label.active { background: var(--c-navy); color: #fff; border-color: transparent; }
+.pill-label.done { background: var(--c-teal-light); color: var(--c-teal); border-color: #9fe1cb; }
+.pill-sep { width: 20px; height: 1px; background: var(--border); flex-shrink: 0; }
+#card {
+  background: var(--bg);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  min-height: 260px;
+}
+.stage-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 13px;
+}
+.tag-pre { background: var(--c-gray-light); color: var(--c-gray); }
+.tag-r   { background: var(--c-blue-light); color: var(--c-blue); }
+.tag-a   { background: var(--c-amber-light); color: var(--c-amber); }
+.tag-m   { background: var(--c-teal-light); color: var(--c-teal); }
+.tag-p   { background: var(--c-orange-light); color: #c0401e; }
+.tag-obj { background: var(--c-purple-light); color: var(--c-purple); }
+#card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+#card .subtext {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  line-height: 1.55;
+}
+.q-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+  font-size: 13px;
+}
+.q-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0 10px 7px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+.q-table td {
+  padding: 9px 10px 9px 0;
+  vertical-align: top;
+  border-bottom: 0.5px solid var(--border);
+  line-height: 1.5;
+  color: var(--text);
+}
+.q-table td:first-child { width: 44%; color: var(--text-muted); }
+.q-table tr:last-child td { border-bottom: none; }
+.choices { display: flex; flex-direction: column; gap: 8px; }
+.choice-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.45;
+  width: 100%;
+}
+.choice-btn:hover { border-color: var(--border-hover); background: var(--bg); }
+.choice-btn .ch-arrow { color: var(--text-muted); flex-shrink: 0; margin-top: 1px; font-size: 15px; }
+.choice-btn .ch-label { font-weight: 500; flex: 1; }
+.choice-btn .ch-wrap { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.choice-btn .ch-wrap .ch-label { font-weight: 500; }
+.choice-btn .ch-wrap .ch-hint { font-size: 12px; color: var(--text-muted); }
+.pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
+@media (max-width: 500px) { .pain-grid { grid-template-columns: 1fr; } }
+.pain-card {
+  background: var(--bg2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+}
+.pain-card:hover { border-color: var(--border-hover); background: var(--bg); }
+.pain-card .pc-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.pain-card .pc-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+.outcome-box { border-radius: var(--radius-sm); padding: 13px 15px; margin-bottom: 1rem; font-size: 13px; line-height: 1.55; }
+.ob-strong { background: var(--c-teal-light); border: 0.5px solid #9fe1cb; }
+.ob-multi  { background: var(--c-blue-light); border: 0.5px solid #b5d4f4; }
+.ob-roi    { background: var(--c-amber-light); border: 0.5px solid #fac775; }
+.ob-warm   { background: var(--c-gray-light); border: 0.5px solid #d3d1c7; }
+.ob-disq   { background: #fcebeb; border: 0.5px solid #f7c1c1; }
+.ob-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; color: var(--text-muted); }
+.ob-strong .ob-label { color: var(--c-teal); }
+.ob-multi .ob-label  { color: var(--c-blue); }
+.ob-roi .ob-label    { color: var(--c-amber); }
+.ob-disq .ob-label   { color: #a32d2d; }
+.ob-action { font-weight: 500; font-style: italic; color: var(--text); }
+.nav-row { display: flex; gap: 8px; margin-top: 1.25rem; flex-wrap: wrap; }
+.nav-btn {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--border);
+  cursor: pointer;
+  background: var(--bg2);
+  color: var(--text);
+  transition: background 0.15s, border-color 0.15s;
+}
+.nav-btn:hover { background: var(--bg); border-color: var(--border-hover); }
+.nav-btn.primary { background: var(--c-navy); color: #fff; border-color: transparent; }
+.nav-btn.primary:hover { opacity: 0.88; }
+.script-box {
+  background: var(--bg2);
+  border-left: 3px solid var(--c-orange);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 1rem;
+  line-height: 1.55;
+}
+.icp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
+@media (max-width: 500px) { .icp-row { grid-template-columns: 1fr; } }
+.icp-card { border: 0.5px solid var(--border); border-radius: var(--radius-sm); padding: 13px; font-size: 12px; line-height: 1.5; }
+.icp-card .ic-head { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+.icp-card .ic-detail { color: var(--text-muted); }
+.icp-card.icp1 { border-top: 2.5px solid var(--c-blue); }
+.icp-card.icp2 { border-top: 2.5px solid var(--c-teal); }
+.mini-tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase; }
+.mt-blue { background: var(--c-blue-light); color: var(--c-blue); }
+.mt-teal { background: var(--c-teal-light); color: var(--c-teal); }
+.bant-grid { width: 100%; border-collapse: collapse; border: 0.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 1.25rem; font-size: 12px; display: table; }
+.bg-header { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); padding: 7px 10px; background: var(--bg2); border-bottom: 0.5px solid var(--border); }
+.bg-cell { padding: 9px 10px; vertical-align: top; border-bottom: 0.5px solid var(--border); line-height: 1.45; color: var(--text); }
+.bg-cell.letter { font-weight: 600; font-size: 15px; background: var(--bg2); border-right: 0.5px solid var(--border); color: var(--c-navy); text-align: center; width: 38px; }
+.bg-cell.last { border-bottom: none; }
+.bg-cell.muted { color: var(--text-muted); }
+.objection-list { display: flex; flex-direction: column; gap: 7px; }
+.obj-item { background: var(--bg2); border: 0.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.obj-trigger { display: flex; justify-content: space-between; align-items: center; padding: 11px 14px; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--text); background: none; border: none; width: 100%; font-family: inherit; text-align: left; gap: 8px; }
+.obj-trigger .ot-arrow { color: var(--text-muted); font-size: 11px; transition: transform 0.15s; flex-shrink: 0; }
+.obj-trigger.open .ot-arrow { transform: rotate(180deg); }
+.obj-body { display: none; padding: 10px 14px 13px; font-size: 13px; color: var(--text-muted); line-height: 1.55; border-top: 0.5px solid var(--border); }
+.obj-body.visible { display: block; }
+.translation-list { display: flex; flex-direction: column; gap: 7px; margin-bottom: 1.25rem; }
+.tr-item { border: 0.5px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; }
+.tr-trigger { display: flex; justify-content: space-between; align-items: center; padding: 10px 13px; cursor: pointer; font-size: 13px; font-weight: 500; color: var(--text); background: var(--bg2); border: none; width: 100%; font-family: inherit; text-align: left; gap: 8px; }
+.tr-body { display: none; padding: 10px 13px 12px; font-size: 12px; color: var(--text-muted); line-height: 1.5; background: var(--bg); border-top: 0.5px solid var(--border); }
+.tr-body.visible { display: block; }
+.tr-probe { margin-top: 6px; font-style: italic; font-size: 12px; color: var(--text); }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <div class="header-text">
+      <h1>Cork Cyber — Discovery Demo Decision Tree</h1>
+      <p>RAMP Framework · BANT Methodology · Built by RampFuel · v4</p>
+    </div>
+    <span class="cork-badge">Sales Playbook</span>
+  </div>
+  <div id="progress-bar"></div>
+  <div id="card"></div>
+</div>
+
+<script>
+const STAGES = ['Pre-call', 'R — Rapport', 'A — Align', 'M — Map', 'P — Progress'];
+let history = [];
+let currentNode = 'pre_start';
+
+const NODES = {
+  pre_start: {
+    stage: 0, tag: 'tag-pre', tagLabel: 'Pre-call · Research & Qualification',
+    title: 'Enter informed. Not winging it.',
+    sub: 'Mandatory rule: If you cannot state two things about this prospect\'s business without asking, you are not ready for this call.',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Research checklist</th><th>If signal is missing</th></tr>
+        <tr><td>MSP type: pure-play, MSSP, hybrid, or vertical-focused?</td><td>Default to hybrid frame; confirm in opening</td></tr>
+        <tr><td>Employee count + rough endpoint estimate</td><td>Estimate from LinkedIn; use "under 50" if unclear</td></tr>
+        <tr><td>Partners/Integrations page — stack signals visible?</td><td>Ask about stack in opening; do not assume tools</td></tr>
+        <tr><td>Ecosystem: Microsoft, Pax8, ConnectWise, NinjaRMM, Datto?</td><td>Check job listings for PSA/RMM mentions</td></tr>
+        <tr><td>ScalePad user? Cork integrates — anchor early.</td><td>Skip the anchor; use generic integration intro</td></tr>
+        <tr><td>PE-backed or investor-owned? ROI conversation required.</td><td>Don't assume ROI pressure; surface it in BANT</td></tr>
+        <tr><td>Inbound trigger: BDR, webinar, insurance question, referral?</td><td>Open with: "What prompted you to book this call?"</td></tr>
+      </table>`,
+    choices: [{ label: 'Research done. Decide ICP route.', next: 'pre_icp' }]
+  },
+
+  pre_icp: {
+    stage: 0, tag: 'tag-pre', tagLabel: 'Pre-call · ICP Route',
+    title: 'Which ICP route before the call?',
+    sub: 'This sets your confirmation statements, close motion, and cycle expectations.',
+    content: () => `
+      <div class="icp-row">
+        <div class="icp-card icp1">
+          <div class="mini-tag mt-blue">ICP 1 — Strategic (ABM)</div>
+          <div class="ic-head">100+ employees · 5,000+ endpoints</div>
+          <div class="ic-detail">Mature stack · Multi-vendor security practice · PE/investor-backed = EBITDA sensitivity · 60–90 day cycle · Multi-thread early · Lead with endpoint reconciliation + ROI</div>
+        </div>
+        <div class="icp-card icp2">
+          <div class="mini-tag mt-teal">ICP 2 — Growth MSP</div>
+          <div class="ic-head">15–100 employees · 500–5,000 endpoints</div>
+          <div class="ic-detail">Partial stack · Insurance/differentiation driven · Target: 1–2 call close in 30 days · 30-min onboarding · 14-day POC path</div>
+        </div>
+      </div>`,
+    choices: [
+      { label: 'ICP 1 — Strategic', hint: '60–90 day · Multi-thread · ROI first', next: 'pre_confirm_icp1' },
+      { label: 'ICP 2 — Growth MSP', hint: '30-day close · Direct trial path', next: 'pre_confirm_icp2' }
+    ]
+  },
+
+  pre_confirm_icp1: {
+    stage: 0, tag: 'tag-pre', tagLabel: 'Pre-call · ICP 1 Confirmation Statements',
+    title: 'Say these. Don\'t ask them cold.',
+    sub: 'Confirm what you found in research. Land as informed, not scripted.',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Signal found</th><th>Confirmation statement</th></tr>
+        <tr><td>PE-backed / investor-owned</td><td class="script-box" style="margin:0;">"For a PE-backed MSP, we typically start by running endpoint reconciliation live — most partners find $3,000–$8,000 in monthly savings in the first session."</td></tr>
+        <tr><td>Large stack / tool sprawl</td><td>"You've got Huntress, ConnectWise, NinjaRMM, Duo — great stack. The question is whether those tools are actually validating each other, or just running in parallel."</td></tr>
+        <tr><td>Recent acquisition</td><td>"It looks like you've recently made an acquisition. This is exactly where Cork adds immediate value — MSP integrations typically take 18 months without full stack visibility."</td></tr>
+      </table>`,
+    choices: [{ label: 'Ready to dial. Open the call.', next: 'r_open' }]
+  },
+
+  pre_confirm_icp2: {
+    stage: 0, tag: 'tag-pre', tagLabel: 'Pre-call · ICP 2 Confirmation Statements',
+    title: 'Say these. Don\'t ask them cold.',
+    sub: 'Pick the statement that matches your research signal.',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Signal found</th><th>Confirmation statement</th></tr>
+        <tr><td>Cyber insurance focus / inbound</td><td>"You reached out about cyber insurance — most MSPs aren't worried about getting a policy, they're worried about a claim getting denied."</td></tr>
+        <tr><td>ScalePad user</td><td>"We integrate with ScalePad directly. Your QBR data and compliance summaries will already be in a structured format before we connect anything."</td></tr>
+        <tr><td>Huntress / NinjaRMM visible</td><td>"We pull from NinjaRMM and Huntress via API — no agent — and cross-reference your EDR, MFA, and backup to show you exactly where the gaps are."</td></tr>
+      </table>`,
+    choices: [{ label: 'Ready to dial. Open the call.', next: 'r_open' }]
+  },
+
+  r_open: {
+    stage: 1, tag: 'tag-r', tagLabel: 'R — Rapport & Runway · 0–5 min',
+    title: 'Open the call. Earn the right to go deep.',
+    sub: 'Goal: build trust, set expectations, earn permission to ask questions. Signal this won\'t be a pitch.',
+    content: () => `
+      <div class="script-box">"Quick intros — then before I jump into anything, I want to make sure I actually understand what's going on for you right now, and only show you the parts of Cork that are actually relevant."</div>
+      <table class="q-table">
+        <tr><th>Move</th><th>Why it works</th></tr>
+        <tr><td>"I saw you're using [tool from website] — is that still your primary RMM?"</td><td>Shows preparation. Anchors to their stack immediately.</td></tr>
+        <tr><td>"Do you have a hard stop at [time]? Want to make sure we get to what's most useful."</td><td>Surfaces commitment. Reveals if they're half-in.</td></tr>
+        <tr><td>"Before the demo, I want to ask a few questions so I'm not showing you things that don't apply. Is that okay?"</td><td>Explicit permission to qualify. Positions as homework, not interrogation.</td></tr>
+        <tr><td>"You reached out — what prompted you to book this demo?"</td><td>For inbound: surfaces the real reason fast.</td></tr>
+      </table>`,
+    choices: [{ label: 'Permission earned. Start discovery.', next: 'a_path' }]
+  },
+
+  a_path: {
+    stage: 2, tag: 'tag-a', tagLabel: 'A — Align on Pain · 5–20 min',
+    title: 'How are they showing up?',
+    sub: 'Choose the discovery path based on whether they named a problem or came to explore.',
+    content: () => '',
+    choices: [
+      { label: 'Direct discovery — they named a problem', hint: 'They opened with a pain. Probe depth before routing.', next: 'a_direct' },
+      { label: 'Assisted discovery — came to "see what it does"', hint: 'No named pain. You need to surface it first.', next: 'a_assisted' }
+    ]
+  },
+
+  a_direct: {
+    stage: 2, tag: 'tag-a', tagLabel: 'A — Direct Discovery',
+    title: 'Go deep on the pain they named.',
+    sub: 'Don\'t stack questions. Ask one, listen, move. Don\'t move to demo without a locked pain.',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Probe</th><th>Listen for</th></tr>
+        <tr><td>"Where does friction show up most — team, tools, or clients directly?"</td><td>Tool sprawl / ops pain · Client churn or QBR struggles · Compliance / insurance questions</td></tr>
+        <tr><td>"How long has this been an issue and what have you tried?"</td><td>Prior tool attempts = real pain · Nothing tried = lower urgency, probe more</td></tr>
+        <tr><td>"Who does this impact — techs, leadership, or clients directly?"</td><td>Multi-level pain = stronger deal · Client-facing impact = urgency signal</td></tr>
+        <tr><td>"On a scale of 1–10, how painful is this right now?"</td><td>7+ = proceed to demo · Below 6 = slow down · Ask: "What would make it a 10?"</td></tr>
+      </table>`,
+    choices: [
+      { label: 'Pain score 7+. Ready to route.', next: 'a_translation' },
+      { label: 'Score below 6 or pain unclear — surface it', next: 'a_assisted' }
+    ]
+  },
+
+  a_assisted: {
+    stage: 2, tag: 'tag-a', tagLabel: 'A — Assisted Discovery',
+    title: 'Name the pain. Ask for a reaction.',
+    sub: 'They came to "see what Cork does." Surface the dominant pain by naming it — don\'t stack questions.',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Pain theme</th><th>What to say</th></tr>
+        <tr><td>Tool sprawl</td><td>"Most MSPs are stitching together 10–15 tools with no unified picture. Does that feel familiar?"</td></tr>
+        <tr><td>Insurance / claim validation</td><td>"Are any of your clients worried about a claim getting denied — tools running but not actually validating coverage?"</td></tr>
+        <tr><td>Orphan licenses / wasted spend</td><td>"We regularly find MSPs with $3,000–$8,000/month in savings from licenses on tools with endpoints offline but still billed."</td></tr>
+        <tr><td>IR cost exposure</td><td>"When a minor incident hits — do you charge the client, absorb the cost, or call a third-party team?"</td></tr>
+        <tr><td>No differentiator / upsell ceiling</td><td>"When you sit across from a prospect, what do you say that the MSP down the street can't?"</td></tr>
+        <tr><td>ROI / board pressure</td><td>"For a PE-backed MSP, we typically start by running endpoint reconciliation live — most find the platform pays for itself before we're done."</td></tr>
+      </table>`,
+    choices: [{ label: 'Pain surfaced. Check translation layer.', next: 'a_translation' }]
+  },
+
+  a_translation: {
+    stage: 2, tag: 'tag-a', tagLabel: 'A — Translation Layer',
+    title: 'What they say vs. what it means.',
+    sub: 'When you hear these phrases, pause before responding. Reframe internally, then probe.',
+    content: () => {
+      const items = [
+        { q: '"Tool sprawl"', a: 'Operational inefficiency, margin erosion, tech labor waste.', probe: '"How many hours per week does your team spend context-switching across dashboards?"' },
+        { q: '"We manage too many licenses"', a: 'Orphan licenses, billing leakage, unrecovered cost.', probe: '"Are you currently tracking which endpoints are billed but offline or inactive?"' },
+        { q: '"Our clients already have insurance"', a: 'Opportunity to validate coverage gaps and upsell renewal review.', probe: '"Do you know exactly which incidents their policies exclude — and how that affects your liability?"' },
+        { q: '"We do M&A"', a: 'Due diligence use case, 18-month integration risk, stack visibility gap.', probe: '"When you acquire an MSP, how long to get full visibility into what tools they were running?"' },
+        { q: '"We want a differentiator"', a: 'Commoditization pressure, need for sticky upsell and revenue angle.', probe: '"What do you currently say to a prospect who asks what makes you different from the MSP down the street?"' },
+        { q: '"We want to justify the cost"', a: 'PE or board pressure, EBITDA sensitivity, ROI must come before pitch.', probe: '"When you present a new tool to ownership, what does the ROI case need to look like?"' }
+      ];
+      return `<div class="translation-list">${items.map((item, i) => `
+        <div class="tr-item">
+          <button class="tr-trigger" onclick="toggleTr(this,${i})">${item.q} <span class="ot-arrow">▾</span></button>
+          <div class="tr-body" id="tr-${i}">
+            <strong>Rep hears:</strong> ${item.a}
+            <div class="tr-probe">Probe: ${item.probe}</div>
+          </div>
+        </div>`).join('')}</div>`;
+    },
+    choices: [{ label: 'Ready to route by dominant pain', next: 'a_pain_routing' }]
+  },
+
+  a_pain_routing: {
+    stage: 2, tag: 'tag-a', tagLabel: 'A — Pain Routing Table',
+    title: 'What did they come in saying?',
+    sub: 'Pick the dominant pain. This sets your demo path, close motion, and financial reframe.',
+    content: () => '',
+    painChoices: [
+      { title: 'Cyber insurance / renewals', sub: 'Manual questionnaires, claim risk, carrier confusion', next: 'm_insurance' },
+      { title: 'Tools don\'t talk to each other', sub: 'Tool sprawl, alert noise, no unified view', next: 'm_sprawl' },
+      { title: 'Claims need to actually get paid', sub: 'Tool compliance gaps, claim validation risk', next: 'm_claim' },
+      { title: 'Need to justify cost / show ROI', sub: 'PE/investor pressure, EBITDA sensitivity', next: 'm_roi' },
+      { title: 'Differentiate / new revenue stream', sub: 'Competitive pressure, upsell ceiling', next: 'm_differentiate' },
+      { title: 'Recent acquisition / M&A activity', sub: 'Stack visibility gap, duplicate licenses', next: 'm_ma' }
+    ]
+  },
+
+  a_bant: {
+    stage: 2, tag: 'tag-a', tagLabel: 'A — BANT Qualification',
+    title: 'Qualify BANT in conversation.',
+    sub: 'Not as a checklist — woven in naturally. Reframe every pain in financial terms before the demo.',
+    content: () => `
+      <table class="bant-grid">
+        <tr><th class="bg-header" style="width:38px"></th><th class="bg-header">Question to ask</th><th class="bg-header">Qualifying signal</th></tr>
+        <tr><td class="bg-cell letter">B</td><td class="bg-cell">Pricing starts at $1/endpoint/month, consumption-based, cancel anytime. For PE-backed MSPs, we start with endpoint reconciliation and let the savings speak first.</td><td class="bg-cell muted">Responds to per-endpoint model · Mentions tool consolidation · PE context = needs ROI first</td></tr>
+        <tr><td class="bg-cell letter">A</td><td class="bg-cell">"For a decision like this — is this in your lane or would your CEO/ownership need to weigh in?"</td><td class="bg-cell muted">"My call" = move fast · CEO/CFO needed = multi-thread · CTO = schedule separate technical walkthrough</td></tr>
+        <tr><td class="bg-cell letter">N</td><td class="bg-cell">"On a 1–10, how painful is [identified issue] right now? What happens if it doesn't get solved in the next 6 months?"</td><td class="bg-cell muted">7+ = proceed · Recent incident = highest urgency · Client asking harder questions = growing urgency</td></tr>
+        <tr><td class="bg-cell letter last">T</td><td class="bg-cell last">"Is there a specific event driving timing — a client renewal, a QBR, a compliance deadline?"</td><td class="bg-cell muted last">ICP 2: 30-day close target · ICP 1: 60–90 day, multi-thread early · Insurance renewal = highest near-term trigger</td></tr>
+      </table>`,
+    choices: [{ label: 'BANT qualified. Lock the pain.', next: 'a_lock' }]
+  },
+
+  a_lock: {
+    stage: 2, tag: 'tag-a', tagLabel: 'A — Lock the Pain',
+    title: 'Say this before the demo. Every time.',
+    sub: 'Name it in their exact words. Quantify the financial consequence. Get verbal confirmation.',
+    content: () => `
+      <div class="script-box">"So what I'm hearing is — the biggest challenge right now is [PAIN]. The financial consequence of that is [X]. If we can solve [PAIN] today, would that make this worth exploring?"</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.55;">If you can't recite the pain in their exact words AND name the financial consequence, go back and probe. Do not move to demo without this locked.</p>`,
+    choices: [{ label: 'Pain locked. Route to the demo path.', next: 'a_pain_routing' }]
+  },
+
+  m_insurance: {
+    stage: 3, tag: 'tag-m', tagLabel: 'M — Map the Solution · Insurance / Claim Risk',
+    title: 'Demo: AI Policy Analyzer + Protect',
+    sub: 'Close motion: POC > Insurance Analyzer demo > Protect upsell at renewal',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Show this in Cork</th><th>Validation question</th></tr>
+        <tr><td>AI Policy Analyzer: upload or connect existing policy — instantly surfaces deductibles, premiums, exclusions, sublimits. Yukon broker integration.</td><td>"If a client had a wire fraud incident tomorrow — do you know exactly what their policy covers and how fast they'd get paid? We can answer that in 60 seconds."</td></tr>
+      </table>
+      <div class="script-box">Financial impact: "If we flagged one excluded tool before a client filed a $200K claim, what does that mean for your liability exposure this year?"</div>
+      <p style="font-size:12px;color:var(--text-muted);">Manual compliance = 5–10 hours per client renewal. One denied claim = $50K–$500K in uninsured client losses.</p>`,
+    choices: [
+      { label: 'Relevance check 7+. Progress the sale.', next: 'p_decision' },
+      { label: 'Check BANT before continuing', next: 'a_bant' },
+      { label: 'Objection came up', next: 'objections' }
+    ]
+  },
+
+  m_sprawl: {
+    stage: 3, tag: 'tag-m', tagLabel: 'M — Map the Solution · Tool Sprawl',
+    title: 'Demo: Vantage unified dashboard',
+    sub: 'Close motion: POC > show silos closing in 24–48hrs > Protect as bonus layer',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Show this in Cork</th><th>Validation question</th></tr>
+        <tr><td>Vantage: 100+ agentless API integrations. Pulls NinjaRMM, ConnectWise, Huntress, Duo, Axiom, Enki, Proofpoint simultaneously. Single pane of glass.</td><td>"How many dashboards does your team log into today to get this same picture? What does it cost in time each week?"</td></tr>
+      </table>
+      <div class="script-box">Financial impact: "How many hours per week does your team spend context-switching? At your average tech rate, what is that worth in labor cost annually?"</div>
+      <p style="font-size:12px;color:var(--text-muted);">Context-switching across 10–15 dashboards = $15K–$30K/year in analyst labor. Orphan licenses add $3K–$8K/month in unrecovered spend.</p>`,
+    choices: [
+      { label: 'Relevance check 7+. Progress the sale.', next: 'p_decision' },
+      { label: 'Check BANT before continuing', next: 'a_bant' },
+      { label: 'Objection came up', next: 'objections' }
+    ]
+  },
+
+  m_claim: {
+    stage: 3, tag: 'tag-m', tagLabel: 'M — Map the Solution · Claim Validation',
+    title: 'Demo: Tool validation layer + Protect as backstop',
+    sub: 'Close motion: Map their stack live > show gaps > Protect tiers as gap filler',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Show this in Cork</th><th>Validation question</th></tr>
+        <tr><td>Tool validation layer: Cork cross-references RMM, EDR, MFA, backup deployment against requirements. Proactively alerts on deviations before a claim is filed.</td><td>"Right now, if a client's MFA silently fell out of compliance — would you know before the claim or after? We catch that automatically."</td></tr>
+      </table>
+      <div class="script-box">Financial impact: "If Cork catches one MFA compliance drop before a claim is filed, what does that mean in avoided client loss for you?"</div>
+      <p style="font-size:12px;color:var(--text-muted);">The #1 reason claims are denied: tool compliance gaps. Each denied claim is a 100% uninsured loss.</p>`,
+    choices: [
+      { label: 'Relevance check 7+. Progress the sale.', next: 'p_decision' },
+      { label: 'Check BANT before continuing', next: 'a_bant' },
+      { label: 'Objection came up', next: 'objections' }
+    ]
+  },
+
+  m_roi: {
+    stage: 3, tag: 'tag-m', tagLabel: 'M — Map the Solution · ROI / PE Pressure',
+    title: 'Demo: Endpoint Reconciliation FIRST',
+    sub: 'Close motion: Show savings live > cost offsets > rollout plan > Protect as upside',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Show this in Cork</th><th>Validation question</th></tr>
+        <tr><td>Endpoint Reconciliation live: instant snapshot of every client — cross-references endpoint counts across RMM, EDR, and all integrated tools. Identifies unused licenses instantly.</td><td>"We found $5,000/month in unused licenses in one session with a similar-sized MSP. I want to show you what that looks like in your environment. Can we connect read-only API access right now?"</td></tr>
+      </table>
+      <div class="script-box">Financial impact: "If we surface $5,000/month in unused licenses right now, what does that do to your EBITDA at the end of the year?"</div>
+      <p style="font-size:12px;color:var(--text-muted);">Average: $5K/month in first session = $60K/year you can show the board before the platform pitch begins.</p>`,
+    choices: [
+      { label: 'Relevance check 7+. Progress the sale.', next: 'p_decision' },
+      { label: 'Check BANT before continuing', next: 'a_bant' },
+      { label: 'Objection came up', next: 'objections' }
+    ]
+  },
+
+  m_differentiate: {
+    stage: 3, tag: 'tag-m', tagLabel: 'M — Map the Solution · Differentiation',
+    title: 'Demo: Cork Protect as revenue stream + differentiator',
+    sub: 'Close motion: Show Protect as a client-facing offer > upsell model > fast rollout path',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Show this in Cork</th><th>Validation question</th></tr>
+        <tr><td>Cork Protect tiers: $25K–$500K annual coverage. Consumption-based per endpoint. Bundle into MSP service packages or offer at cyber insurance renewal discussions.</td><td>"When your clients ask 'what happens if something goes wrong?' — right now, what do you say? Cork Protect changes that answer, and it's sticky enough that churn drops."</td></tr>
+      </table>
+      <div class="script-box">Financial impact: "If closing one additional client per quarter because of Cork Protect — what does that mean for your ARR at the end of the year?"</div>
+      <p style="font-size:12px;color:var(--text-muted);">MSPs with a warranty command 15–25% higher MRR per seat. Losing one client to a competitor with a warranty = $2K–$10K ARR per year.</p>`,
+    choices: [
+      { label: 'Relevance check 7+. Progress the sale.', next: 'p_decision' },
+      { label: 'Check BANT before continuing', next: 'a_bant' },
+      { label: 'Objection came up', next: 'objections' }
+    ]
+  },
+
+  m_ma: {
+    stage: 3, tag: 'tag-m', tagLabel: 'M — Map the Solution · M&A / Due Diligence',
+    title: 'Demo: Cork Vantage as due diligence tool',
+    sub: 'Close motion: POC using one acquired client environment as test case > full stack in 24–48hrs > Protect gap coverage',
+    content: () => `
+      <table class="q-table">
+        <tr><th>Show this in Cork</th><th>Validation question</th></tr>
+        <tr><td>Cork Vantage as due diligence: agentless API connections into all integrated tools across the acquired MSP environment. Full stack visibility in 24–48 hours.</td><td>"When you acquire another MSP, how long does it currently take to get full visibility into the tools they were running and what their clients are covered for?"</td></tr>
+      </table>
+      <div class="script-box">Financial impact: "If we compress your integration timeline by 6 months, what does that mean in avoided labor cost and client retention risk? MSP integrations average 18 months at $15K+/month."</div>
+      <p style="font-size:12px;color:var(--text-muted);">$15K+/month in duplicated tool spend + integration labor = $270K per acquisition before full visibility without Cork.</p>`,
+    choices: [
+      { label: 'Relevance check 7+. Progress the sale.', next: 'p_decision' },
+      { label: 'Check BANT before continuing', next: 'a_bant' },
+      { label: 'Objection came up', next: 'objections' }
+    ]
+  },
+
+  p_decision: {
+    stage: 4, tag: 'tag-p', tagLabel: 'P — Progress the Sale · 40–45 min',
+    title: 'Read the signal. Choose the right next step.',
+    sub: 'Recap in their words with financial consequence, then use the decision tree below.',
+    content: () => `
+      <div class="script-box">"So based on what you told me — [PAIN] is the real issue, it's costing you [FINANCIAL CONSEQUENCE], and we've shown you Cork addresses it directly. What's the right next step for you?"</div>`,
+    choices: [
+      { label: 'Strong pain · BANT 3/4+ · Asked about pricing or POC', hint: 'Move fast. Close to trial.', next: 'p_strong' },
+      { label: 'Pain confirmed but missing authority or timeline', hint: 'Identify other stakeholders. Multi-thread now.', next: 'p_multithread' },
+      { label: 'PE/board-backed · EBITDA sensitivity · Needs ROI proof', hint: 'Run endpoint reconciliation live.', next: 'p_roi_first' },
+      { label: 'Right pain, wrong timing · Competing project or budget cycle', hint: 'Exit with a concrete re-entry date.', next: 'p_warm' },
+      { label: 'Low pain score · 3+ BANT gaps · No urgency or trigger', hint: 'Protect your pipeline. Disqualify cleanly.', next: 'p_disqualify' }
+    ]
+  },
+
+  p_strong: {
+    stage: 4, tag: 'tag-p', tagLabel: 'P — Strong Fit',
+    title: 'Close to trial. Move today.',
+    sub: 'Name the next step. Get verbal acceptance before hanging up.',
+    content: () => `
+      <div class="outcome-box ob-strong">
+        <div class="ob-label">Strong fit</div>
+        <div class="ob-action">"Let's get you into a trial. I'll send the onboarding link today — 30 minutes to connect, insights in 24–48 hours. I'll check in on day 5. Does that work?"</div>
+      </div>
+      <div class="script-box">Post-call standard: Send demo recording same day · Include ROI one-pager + Protect coverage breakdown · Name the next step explicitly in your follow-up.</div>`,
+    choices: [
+      { label: 'Objection came up', next: 'objections' },
+      { label: 'Start a new call flow', next: 'pre_start' }
+    ]
+  },
+
+  p_multithread: {
+    stage: 4, tag: 'tag-p', tagLabel: 'P — Multi-thread',
+    title: 'Bring in the other stakeholders.',
+    sub: 'Don\'t let this stall. Identify who needs to be in the room and schedule them now.',
+    content: () => `
+      <div class="outcome-box ob-multi">
+        <div class="ob-label">Multi-thread</div>
+        <div class="ob-action">"This hits a real problem. Who else needs to be in the room — CEO, CFO, CTO? I can offer a separate technical walkthrough with our engineering team for the CTO, and a 20-minute ROI session for ownership."</div>
+      </div>
+      <table class="q-table">
+        <tr><th>ICP 1 close path</th><th>ICP 2 close path</th></tr>
+        <tr><td>Lead with endpoint reconciliation to surface ROI first · Offer exec-level ROI call: CEO/CFO, 20 min · Separate CTO technical walkthrough</td><td>Propose trial directly: "Let's get you live today — 30 minutes" · Frame Protect as differentiation they can sell this week · Surface 1–2 client upsell opportunities</td></tr>
+      </table>`,
+    choices: [
+      { label: 'Objection came up', next: 'objections' },
+      { label: 'Start a new call flow', next: 'pre_start' }
+    ]
+  },
+
+  p_roi_first: {
+    stage: 4, tag: 'tag-p', tagLabel: 'P — ROI First',
+    title: 'Run endpoint reconciliation live. Right now.',
+    sub: 'Don\'t pitch the platform. Show the savings. Let the math close it.',
+    content: () => `
+      <div class="outcome-box ob-roi">
+        <div class="ob-label">ROI first</div>
+        <div class="ob-action">"Let's run endpoint reconciliation live right now — 15 minutes. If we find savings that offset the platform cost, does that make this a straightforward decision for your board?"</div>
+      </div>`,
+    choices: [
+      { label: 'Objection came up', next: 'objections' },
+      { label: 'Start a new call flow', next: 'pre_start' }
+    ]
+  },
+
+  p_warm: {
+    stage: 4, tag: 'tag-p', tagLabel: 'P — Keep Warm',
+    title: 'Exit with a locked re-entry point.',
+    sub: 'Don\'t leave it open-ended. Get a specific date before you hang up.',
+    content: () => `
+      <div class="outcome-box ob-warm">
+        <div class="ob-label">Keep warm</div>
+        <div class="ob-action">"This clearly resonates. Let me send the ROI one-pager and the Protect coverage breakdown — both are short. When's the right time to revisit — 30 or 60 days?"</div>
+      </div>`,
+    choices: [
+      { label: 'Objection came up', next: 'objections' },
+      { label: 'Start a new call flow', next: 'pre_start' }
+    ]
+  },
+
+  p_disqualify: {
+    stage: 4, tag: 'tag-p', tagLabel: 'P — Disqualify',
+    title: 'Be honest. Protect your pipeline.',
+    sub: 'Low pain + 3+ BANT gaps = not a fit right now. Say it clearly. Leave the door open.',
+    content: () => `
+      <div class="outcome-box ob-disq">
+        <div class="ob-label">Disqualify</div>
+        <div class="ob-action">"Honestly, I don't think this is the right fit for where you are right now — and I'd rather tell you that than waste your time. Can I check back when [trigger event]?"</div>
+      </div>`,
+    choices: [{ label: 'Start a new call flow', next: 'pre_start' }]
+  },
+
+  objections: {
+    stage: 4, tag: 'tag-obj', tagLabel: 'Objection Handling',
+    title: 'Don\'t collapse. Address directly. Redirect.',
+    sub: 'Click any objection to see the response.',
+    content: () => {
+      const objs = [
+        { q: '"We already have tools that do this."', a: 'Cork isn\'t replacing your stack — it\'s the layer that makes your stack defensible. If a claim gets denied because your tools weren\'t cross-referencing, your existing investment didn\'t protect you.' },
+        { q: '"Cyber insurance handles this."', a: 'Insurance pays after the claim is approved — which takes weeks. Cork pays within an hour. And Cork makes sure the claim gets approved in the first place.' },
+        { q: '"The cost will hurt our EBITDA."', a: 'Let\'s run endpoint reconciliation right now — 15 minutes. We typically find $3,000–$8,000 in monthly savings. Most partners find the platform pays for itself before we\'re done.' },
+        { q: '"The timing isn\'t right."', a: 'Totally fair — can I ask what\'s driving that? Budget cycle, competing project, or something else? I want to make sure I come back at the right moment, not the wrong one.' },
+        { q: '"I need to show this to my boss/board."', a: 'Let\'s set that up together — I\'d rather do a 20-minute walkthrough with your team than send a deck that sits in a folder. What does the right session look like?' },
+        { q: '"What does this cost?"', a: 'Pricing starts at $1/endpoint/month, consumption-based, cancel anytime. But for most MSPs, the more useful question is what endpoint reconciliation saves you first — most find it before we finish the session.' },
+        { q: '"Do you work with our insurance broker?"', a: 'We partner with brokers like Yukon to run instant requotes with carrier-grade data. If you introduce us, we can typically show your clients a 20–30% premium reduction with better coverage terms.' },
+        { q: '"Can you support RBAC / multi-user access?"', a: 'RBAC is a high-priority feature on the product roadmap for this quarter. In the meantime, we can structure access to minimize exposure and have you live today.' }
+      ];
+      return `<div class="objection-list">${objs.map((o, i) => `
+        <div class="obj-item">
+          <button class="obj-trigger" onclick="toggleObj(this,${i})">${o.q}<span class="ot-arrow">▾</span></button>
+          <div class="obj-body" id="obj-${i}">${o.a}</div>
+        </div>`).join('')}</div>`;
+    },
+    choices: [
+      { label: 'Back to close decision', next: 'p_decision' },
+      { label: 'Start a new call flow', next: 'pre_start' }
+    ]
+  }
+};
+
+function toggleObj(btn, i) {
+  const body = document.getElementById('obj-' + i);
+  const open = body.classList.toggle('visible');
+  btn.classList.toggle('open', open);
+}
+
+function toggleTr(btn, i) {
+  const body = document.getElementById('tr-' + i);
+  body.classList.toggle('visible');
+  const arrow = btn.querySelector('.ot-arrow');
+  if (arrow) arrow.style.transform = body.classList.contains('visible') ? 'rotate(180deg)' : '';
+}
+
+function buildProgressBar() {
+  const node = NODES[currentNode];
+  const s = node ? node.stage : 0;
+  document.getElementById('progress-bar').innerHTML = STAGES.map((label, i) => {
+    let cls = 'pill-label';
+    if (i === s) cls += ' active';
+    else if (i < s) cls += ' done';
+    const sep = i < STAGES.length - 1 ? '<div class="pill-sep"></div>' : '';
+    return `<div class="stage-pill"><span class="${cls}">${label}</span></div>${sep}`;
+  }).join('');
+}
+
+function navigate(nodeId) {
+  history.push(currentNode);
+  currentNode = nodeId;
+  render();
+  window.scrollTo(0, 0);
+}
+
+function goBack() {
+  if (!history.length) return;
+  currentNode = history.pop();
+  render();
+  window.scrollTo(0, 0);
+}
+
+function render() {
+  const node = NODES[currentNode];
+  if (!node) return;
+  buildProgressBar();
+
+  let choicesHTML = '';
+  if (node.painChoices) {
+    choicesHTML = `<div class="pain-grid">${node.painChoices.map(c => `
+      <button class="pain-card" onclick="navigate('${c.next}')">
+        <div class="pc-title">${c.title}</div>
+        <div class="pc-sub">${c.sub}</div>
+      </button>`).join('')}</div>`;
+  } else if (node.choices) {
+    choicesHTML = `<div class="choices">${node.choices.map(c => `
+      <button class="choice-btn" onclick="navigate('${c.next}')">
+        <span class="ch-arrow">›</span>
+        ${c.hint
+          ? `<span class="ch-wrap"><span class="ch-label">${c.label}</span><span class="ch-hint">${c.hint}</span></span>`
+          : `<span class="ch-label">${c.label}</span>`}
+      </button>`).join('')}</div>`;
+  }
+
+  const backBtn = history.length ? `<button class="nav-btn" onclick="goBack()">← Back</button>` : '';
+
+  document.getElementById('card').innerHTML = `
+    <span class="stage-tag ${node.tag}">${node.tagLabel}</span>
+    <h2>${node.title}</h2>
+    ${node.sub ? `<p class="subtext">${node.sub}</p>` : ''}
+    ${node.content()}
+    ${choicesHTML}
+    <div class="nav-row">${backBtn}</div>`;
+}
+
+render();
+</script>
+</body>
+</html>
