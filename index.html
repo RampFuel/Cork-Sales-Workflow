@@ -84,6 +84,58 @@ body {
 #card h2 { font-family: var(--font-head); font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 7px; line-height: 1.25; }
 #card .subtext { font-size: 13px; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
 
+/* GOAL CALLOUT — R, A, M, P only */
+.goal-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--corange);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 10px 14px;
+  margin-bottom: 1.4rem;
+}
+.goal-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--corange);
+  white-space: nowrap;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+.goal-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* READ THE ROOM — subtle inline tip */
+.room-tip {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.1rem;
+  font-family: var(--font-body);
+}
+.room-tip-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--blue);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .q-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 13px; }
 .q-table th { text-align: left; font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; padding: 0 10px 8px 0; border-bottom: 2px solid var(--corange); }
 .q-table td { padding: 10px 10px 10px 0; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.5; color: var(--text); }
@@ -120,17 +172,28 @@ body {
 .choice-btn .ch-wrap .ch-label { font-weight: 700; }
 .choice-btn .ch-wrap .ch-hint { font-size: 12px; color: var(--text-muted); }
 
+/* Proceed CTA — divider + distinct next-step button */
+.proceed-wrap { margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid var(--border); }
+.proceed-label { font-family: var(--font-body); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px; }
+.choice-btn-primary { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--bg); border: 1.5px solid var(--corange); border-radius: var(--radius-sm); padding: 13px 16px; cursor: pointer; text-align: left; font-family: var(--font-body); font-size: 13px; font-weight: 700; color: var(--corange); transition: background 0.15s, color 0.15s; line-height: 1.3; width: 100%; }
+.choice-btn-primary:hover { background: var(--corange); color: #fff; }
+.choice-btn-primary:hover .cta-arrow { color: #fff; }
+.choice-btn-primary .cta-arrow { font-size: 17px; font-weight: 700; flex-shrink: 0; color: var(--corange); transition: color 0.15s; }
+
 .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
 @media (max-width: 520px) { .pain-grid { grid-template-columns: 1fr; } }
 .pain-card { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--corange); border-radius: var(--radius-sm); padding: 12px 14px; cursor: pointer; text-align: left; font-family: var(--font-body); transition: border-color 0.15s, background 0.15s; width: 100%; }
 .pain-card:hover { background: var(--corange-light); border-color: var(--corange); }
 .pain-card .pc-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .pain-card .pc-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+.pain-card.deprioritized { border-left-color: var(--border-strong); opacity: 0.6; }
+.pain-card.deprioritized:hover { opacity: 1; }
+.pain-card.deprioritized .pc-title::after { content: ' — less common'; font-size: 10px; font-weight: 500; color: var(--text-muted); }
 
 .outcome-box { border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 1rem; font-size: 13px; line-height: 1.6; }
 .ob-strong { background: var(--teal-light); border-left: 3px solid var(--teal); }
 .ob-multi  { background: var(--blue-light); border-left: 3px solid var(--blue); }
-.ob-roi    { background: #FFF8E2; border-left: 3px solid #FFCA37; }
+.ob-roi    { background: #FFF8E2; border-left: 3px solid #FFCA37; color: #292527}
 .ob-warm   { background: var(--bg2); border-left: 3px solid var(--border-strong); }
 .ob-disq   { background: #FCE8E6; border-left: 3px solid #D83300; }
 .ob-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; color: var(--text-muted); }
@@ -235,6 +298,13 @@ function refreshProgress() {
   if (ready) ready.classList.toggle('on', done === total);
 }
 
+/* ── helpers ── */
+function goalBlock(text) {
+  return `<div class="goal-block"><span class="goal-label">Goal</span><span class="goal-text">${text}</span></div>`;
+}
+
+const READ_THE_ROOM = `<div class="room-tip"><span class="room-tip-label">Tip</span><span>Read the energy before your first move. Rushed exec = tighter open. Warm and curious = let it breathe. The personal connection you build in the first 30 seconds determines how honest every answer after it will be.</span></div>`;
+
 const NODES = {
   pre_start: {
     stage:0, tag:'tag-pre', tagLabel:'Pre-call · Research & Qualification',
@@ -290,7 +360,7 @@ const NODES = {
     content:()=>`
       <table class="q-table">
         <tr><th>Signal found</th><th>Confirmation statement</th></tr>
-        <tr><td>PE-backed / investor-owned</td><td>"For a PE-backed MSP, we typically start by running endpoint reconciliation live — most partners find $3,000–$8,000 in monthly savings in the first session."</td></tr>
+        <tr><td>PE-backed / investor-owned</td><td>"We typically start by running endpoint reconciliation live — most partners find $3,000–$8,000 in monthly savings in the first session."</td></tr>
         <tr><td>Large stack / tool sprawl</td><td>"You've got Huntress, ConnectWise, NinjaRMM, Duo — great stack. The question is whether those tools are actually validating each other, or just running in parallel."</td></tr>
         <tr><td>Recent acquisition</td><td>"It looks like you've recently made an acquisition — MSP integrations typically take 18 months without full stack visibility. Cork compresses that."</td></tr>
       </table>`,
@@ -314,8 +384,9 @@ const NODES = {
   r_open: {
     stage:1, tag:'tag-r', tagLabel:'R — Rapport & Runway · 0–5 min',
     title:"Open the call. Earn the right to go deep.",
-    sub:"Goal: build trust, set expectations, earn permission to ask questions. Signal this won't be a pitch.",
+    goal:"Build trust, set expectations, and earn explicit permission to ask discovery questions. If you skip this stage, every question that follows will feel like an interrogation.",
     content:()=>`
+      ${READ_THE_ROOM}
       <div class="script-box">"Quick intros — then before I jump into anything, I want to make sure I actually understand what's going on for you right now, and only show you the parts of Cork that are relevant to your business."</div>
       <table class="q-table">
         <tr><th>Move</th><th>Why it works</th></tr>
@@ -330,7 +401,7 @@ const NODES = {
   a_path: {
     stage:2, tag:'tag-a', tagLabel:'A — Align on Pain · 5–20 min',
     title:"How are they showing up?",
-    sub:"Choose the discovery path based on whether they named a problem or came to explore.",
+    goal:"Surface the dominant pain and qualify BANT in conversation — not as a checklist. Don't move to demo without a locked pain you can state in their exact words.",
     content:()=>'',
     choices:[
       {label:'Direct discovery — they named a problem',hint:"They opened with a pain. Probe depth before routing.",next:'a_direct'},
@@ -341,7 +412,7 @@ const NODES = {
   a_direct: {
     stage:2, tag:'tag-a', tagLabel:'A — Direct Discovery',
     title:"Go deep on the pain they named.",
-    sub:"Don't stack questions. Ask one, listen, move. Don't move to demo without a locked pain.",
+    goal:"Turn their opening statement into a locked pain with a financial consequence. Ask one question, listen fully, then move — don't stack.",
     content:()=>`
       <table class="q-table">
         <tr><th>Probe</th><th>Listen for</th></tr>
@@ -359,7 +430,7 @@ const NODES = {
   a_assisted: {
     stage:2, tag:'tag-a', tagLabel:'A — Assisted Discovery',
     title:"Name the pain. Ask for a reaction.",
-    sub:'They came to "see what Cork does." Surface the dominant pain by naming it — don\'t stack questions.',
+    goal:"They came to explore. Name a pain that fits their situation and watch whether it lands. If their tone shifts, you found it. If not, keep probing.",
     content:()=>`
       <table class="q-table">
         <tr><th>Pain theme</th><th>What to say</th></tr>
@@ -376,7 +447,7 @@ const NODES = {
   a_translation: {
     stage:2, tag:'tag-a', tagLabel:'A — Translation Layer',
     title:"What they say vs. what it means.",
-    sub:"When you hear these phrases, pause before responding. Reframe internally, then probe.",
+    goal:"Before routing to the demo, decode what they actually told you. The words prospects use rarely describe the real business problem — this layer bridges the gap.",
     content:()=>{
       const items=[
         {q:'"Tool sprawl"',a:'Operational inefficiency, margin erosion, tech labor waste.',probe:'"How many hours per week does your team spend context-switching across dashboards?"'},
@@ -398,22 +469,22 @@ const NODES = {
   a_pain_routing: {
     stage:2, tag:'tag-a', tagLabel:'A — Pain Routing Table',
     title:"What did they come in saying?",
-    sub:"Pick the dominant pain. This sets your demo path, close motion, and financial reframe.",
+    goal:"Pick the dominant pain to set your demo path. The value prop shifts based on entry point — showing the wrong module wastes the demo and loses credibility.",
     content:()=>'',
     painChoices:[
-      {title:'Cyber insurance / renewals',sub:'Manual questionnaires, claim risk, carrier confusion',next:'m_insurance'},
       {title:"Tools don't talk to each other",sub:'Tool sprawl, alert noise, no unified view',next:'m_sprawl'},
       {title:'Claims need to actually get paid',sub:'Tool compliance gaps, claim validation risk',next:'m_claim'},
       {title:'Need to justify cost / show ROI',sub:'PE/investor pressure, EBITDA sensitivity',next:'m_roi'},
       {title:'Differentiate / new revenue stream',sub:'Competitive pressure, upsell ceiling',next:'m_differentiate'},
       {title:'Recent acquisition / M&A activity',sub:'Stack visibility gap, duplicate licenses',next:'m_ma'}
+      {title:'Cyber insurance / renewals',sub:'Manual questionnaires, claim risk, carrier confusion',next:'m_insurance', deprioritized: true}
     ]
   },
 
   a_bant: {
     stage:2, tag:'tag-a', tagLabel:'A — BANT Qualification',
     title:"Qualify BANT in conversation.",
-    sub:"Not as a checklist — woven in naturally. Reframe every pain in financial terms before the demo.",
+    goal:"Weave BANT in naturally — don't run it as a checklist. Reframe every pain in financial terms before the demo. If 3+ elements are missing, you're not ready to demo.",
     content:()=>`
       <div class="bant-wrap">
         <div class="bant-head"><div class="bant-head-cell"></div><div class="bant-head-cell">Question to ask</div><div class="bant-head-cell">Qualifying signal</div></div>
@@ -428,7 +499,7 @@ const NODES = {
   a_lock: {
     stage:2, tag:'tag-a', tagLabel:'A — Lock the Pain',
     title:"Say this before the demo. Every time.",
-    sub:"Name it in their exact words. Quantify the financial consequence. Get verbal confirmation.",
+    goal:"Confirm the pain in their exact words with a named financial consequence before any product is shown. If they confirm it, the demo becomes a proof — not a pitch.",
     content:()=>`
       <div class="script-box">"So what I'm hearing is — the biggest challenge right now is [PAIN]. The financial consequence of that is [X]. If we can solve [PAIN] today, would that make this worth exploring?"</div>
       <p class="info-note">If you can't recite the pain in their exact words AND name the financial consequence, go back and probe. Do not move to demo without this locked.</p>`,
@@ -438,91 +509,91 @@ const NODES = {
   m_insurance: {
     stage:3, tag:'tag-m', tagLabel:'M — Map the Solution · Insurance / Claim Risk',
     title:'Demo: AI Policy Analyzer + Protect',
-    sub:'Close motion: POC > Insurance Analyzer demo > Protect upsell at renewal',
+    goal:"Show only what's relevant to claim risk and policy validation. Every module beyond that dilutes the message.",
     content:()=>`
       <table class="q-table">
         <tr><th>Show this in Cork</th><th>Validation question</th></tr>
         <tr><td>AI Policy Analyzer: upload or connect existing policy — instantly surfaces deductibles, premiums, exclusions, sublimits. Yukon broker integration.</td><td>"If a client had a wire fraud incident tomorrow — do you know exactly what their policy covers and how fast they'd get paid? We can answer that in 60 seconds."</td></tr>
       </table>
       <div class="script-box">Financial impact: "If we flagged one excluded tool before a client filed a $200K claim, what does that mean for your liability exposure this year?"</div>
-      <p class="info-note">Manual compliance = 5–10 hours per client renewal. One denied claim = $50K–$500K in uninsured client losses.</p>`,
+      <p class="info-note">Close motion: POC > Insurance Analyzer demo > Protect upsell at renewal. Manual compliance = 5–10 hours per client renewal. One denied claim = $50K–$500K in uninsured client losses.</p>`,
     choices:[{label:'Relevance check 7+. Progress the sale.',next:'p_decision'},{label:'Check BANT before continuing',next:'a_bant'},{label:'Objection came up',next:'objections'}]
   },
 
   m_sprawl: {
     stage:3, tag:'tag-m', tagLabel:'M — Map the Solution · Tool Sprawl',
     title:'Demo: Vantage unified dashboard',
-    sub:'Close motion: POC > show silos closing in 24–48hrs > Protect as bonus layer',
+    goal:"Show the unified view first — let the consolidation moment land before going deeper. Run each section in short loops: reconnect to pain, show capability, validate fit.",
     content:()=>`
       <table class="q-table">
         <tr><th>Show this in Cork</th><th>Validation question</th></tr>
         <tr><td>Vantage: 100+ agentless API integrations. Pulls NinjaRMM, ConnectWise, Huntress, Duo, Axiom, Enki, Proofpoint simultaneously. Single pane of glass.</td><td>"How many dashboards does your team log into today to get this same picture? What does it cost in time each week?"</td></tr>
       </table>
       <div class="script-box">Financial impact: "How many hours per week does your team spend context-switching? At your average tech rate, what is that worth in labor cost annually?"</div>
-      <p class="info-note">Context-switching across 10–15 dashboards = $15K–$30K/year in analyst labor. Orphan licenses add $3K–$8K/month in unrecovered spend.</p>`,
+      <p class="info-note">Close motion: POC > show silos closing in 24–48hrs > Protect as bonus layer. Context-switching = $15K–$30K/year in analyst labor. Orphan licenses add $3K–$8K/month in unrecovered spend.</p>`,
     choices:[{label:'Relevance check 7+. Progress the sale.',next:'p_decision'},{label:'Check BANT before continuing',next:'a_bant'},{label:'Objection came up',next:'objections'}]
   },
 
   m_claim: {
     stage:3, tag:'tag-m', tagLabel:'M — Map the Solution · Claim Validation',
     title:'Demo: Tool validation layer + Protect as backstop',
-    sub:'Close motion: Map their stack live > show gaps > Protect tiers as gap filler',
+    goal:"Map their stack live and show gaps in real time. The moment they see a compliance gap on their own environment is the close moment.",
     content:()=>`
       <table class="q-table">
         <tr><th>Show this in Cork</th><th>Validation question</th></tr>
         <tr><td>Tool validation layer: Cork cross-references RMM, EDR, MFA, backup deployment against requirements. Proactively alerts on deviations before a claim is filed.</td><td>"Right now, if a client's MFA silently fell out of compliance — would you know before the claim or after? We catch that automatically."</td></tr>
       </table>
       <div class="script-box">Financial impact: "If Cork catches one MFA compliance drop before a claim is filed, what does that mean in avoided client loss for you?"</div>
-      <p class="info-note">The #1 reason claims are denied: tool compliance gaps. Each denied claim is a 100% uninsured loss.</p>`,
+      <p class="info-note">Close motion: Map their stack live > show gaps > Protect tiers as gap filler. The #1 reason claims are denied: tool compliance gaps. Each denied claim is a 100% uninsured loss.</p>`,
     choices:[{label:'Relevance check 7+. Progress the sale.',next:'p_decision'},{label:'Check BANT before continuing',next:'a_bant'},{label:'Objection came up',next:'objections'}]
   },
 
   m_roi: {
     stage:3, tag:'tag-m', tagLabel:'M — Map the Solution · ROI / PE Pressure',
     title:'Demo: Endpoint Reconciliation FIRST',
-    sub:'Close motion: Show savings live > cost offsets > rollout plan > Protect as upside',
+    goal:"Don't open with the platform. Surface the savings number first — once the math lands, the rest of the demo is validation, not persuasion.",
     content:()=>`
       <table class="q-table">
         <tr><th>Show this in Cork</th><th>Validation question</th></tr>
         <tr><td>Endpoint Reconciliation live: instant snapshot of every client — cross-references endpoint counts across RMM, EDR, and all integrated tools. Identifies unused licenses instantly.</td><td>"We found $5,000/month in unused licenses in one session with a similar-sized MSP. I want to show you what that looks like in your environment. Can we connect read-only API access right now?"</td></tr>
       </table>
       <div class="script-box">Financial impact: "If we surface $5,000/month in unused licenses right now, what does that do to your EBITDA at the end of the year?"</div>
-      <p class="info-note">Average: $5K/month in first session = $60K/year you can show the board before the platform pitch begins.</p>`,
+      <p class="info-note">Close motion: Show savings live > cost offsets > rollout plan > Protect as upside. Average: $5K/month in first session = $60K/year you can show the board before the platform pitch begins.</p>`,
     choices:[{label:'Relevance check 7+. Progress the sale.',next:'p_decision'},{label:'Check BANT before continuing',next:'a_bant'},{label:'Objection came up',next:'objections'}]
   },
 
   m_differentiate: {
     stage:3, tag:'tag-m', tagLabel:'M — Map the Solution · Differentiation',
     title:'Demo: Cork Protect as revenue stream + differentiator',
-    sub:'Close motion: Show Protect as a client-facing offer > upsell model > fast rollout path',
+    goal:"Position Protect as something they can sell this week — not a feature to add later. Frame it as a client-facing offer that changes how they compete.",
     content:()=>`
       <table class="q-table">
         <tr><th>Show this in Cork</th><th>Validation question</th></tr>
         <tr><td>Cork Protect tiers: $25K–$500K annual coverage. Consumption-based per endpoint. Bundle into MSP service packages or offer at cyber insurance renewal discussions.</td><td>"When your clients ask 'what happens if something goes wrong?' — right now, what do you say? Cork Protect changes that answer, and it's sticky enough that churn drops."</td></tr>
       </table>
       <div class="script-box">Financial impact: "If closing one additional client per quarter because of Cork Protect — what does that mean for your ARR at the end of the year?"</div>
-      <p class="info-note">MSPs with a warranty command 15–25% higher MRR per seat. Losing one client to a competitor with a warranty = $2K–$10K ARR per year.</p>`,
+      <p class="info-note">Close motion: Show Protect as a client-facing offer > upsell model > fast rollout path. MSPs with a warranty command 15–25% higher MRR per seat.</p>`,
     choices:[{label:'Relevance check 7+. Progress the sale.',next:'p_decision'},{label:'Check BANT before continuing',next:'a_bant'},{label:'Objection came up',next:'objections'}]
   },
 
   m_ma: {
     stage:3, tag:'tag-m', tagLabel:'M — Map the Solution · M&A / Due Diligence',
     title:'Demo: Cork Vantage as due diligence tool',
-    sub:'Close motion: POC using one acquired client environment > full stack in 24–48hrs > Protect gap coverage',
+    goal:"Use one acquired client environment as the live test case — getting full stack visibility in 24–48 hours on a real acquisition is the demo. Don't show generic features; show their data.",
     content:()=>`
       <table class="q-table">
         <tr><th>Show this in Cork</th><th>Validation question</th></tr>
         <tr><td>Cork Vantage as due diligence: agentless API connections into all integrated tools across the acquired MSP environment. Full stack visibility in 24–48 hours.</td><td>"When you acquire another MSP, how long does it currently take to get full visibility into the tools they were running and what their clients are covered for?"</td></tr>
       </table>
       <div class="script-box">Financial impact: "If we compress your integration timeline by 6 months, what does that mean in avoided labor cost and client retention risk? MSP integrations average 18 months at $15K+/month."</div>
-      <p class="info-note">$15K+/month in duplicated tool spend + integration labor = $270K per acquisition before full visibility without Cork.</p>`,
+      <p class="info-note">Close motion: POC using one acquired client environment > full stack in 24–48hrs > Protect gap coverage. $270K in duplicated costs per acquisition without visibility.</p>`,
     choices:[{label:'Relevance check 7+. Progress the sale.',next:'p_decision'},{label:'Check BANT before continuing',next:'a_bant'},{label:'Objection came up',next:'objections'}]
   },
 
   p_decision: {
     stage:4, tag:'tag-p', tagLabel:'P — Progress the Sale · 40–45 min',
     title:"Read the signal. Choose the right next step.",
-    sub:"Recap in their words with financial consequence, then use the decision tree below.",
+    goal:"Recap the pain in their exact words with the financial consequence, then book a named, dated next step before hanging up. A next step without a date is not a next step.",
     content:()=>`<div class="script-box">"So based on what you told me — [PAIN] is the real issue, it's costing you [FINANCIAL CONSEQUENCE], and we've shown you Cork addresses it directly. What's the right next step for you?"</div>`,
     choices:[
       {label:'Strong pain · BANT 3/4+ · Asked about pricing or POC',hint:'Move fast. Close to trial.',next:'p_strong'},
@@ -536,7 +607,7 @@ const NODES = {
   p_strong: {
     stage:4, tag:'tag-p', tagLabel:'P — Strong Fit',
     title:"Close to trial. Move today.",
-    sub:"Name the next step. Get verbal acceptance before hanging up.",
+    goal:"Get the onboarding link sent before the call ends. Same-day follow-up is the standard — not a courtesy.",
     content:()=>`
       <div class="outcome-box ob-strong"><div class="ob-label">Strong fit</div><div class="ob-action">"Let's get you into a trial. I'll send the onboarding link today — 30 minutes to connect, insights in 24–48 hours. I'll check in on day 5. Does that work?"</div></div>
       <div class="script-box">Post-call standard: send demo recording same day · include ROI one-pager + Protect coverage breakdown · name the next step explicitly in your follow-up.</div>`,
@@ -546,7 +617,7 @@ const NODES = {
   p_multithread: {
     stage:4, tag:'tag-p', tagLabel:'P — Multi-thread',
     title:"Bring in the other stakeholders.",
-    sub:"Don't let this stall. Identify who needs to be in the room and schedule them now.",
+    goal:"Leave this call with a named second meeting booked — not a promise to follow up. Get the next stakeholder's name and a date before you hang up.",
     content:()=>`
       <div class="outcome-box ob-multi"><div class="ob-label">Multi-thread</div><div class="ob-action">"This hits a real problem. Who else needs to be in the room — CEO, CFO, CTO? I can offer a separate technical walkthrough with our engineering team for the CTO, and a 20-minute ROI session for ownership."</div></div>
       <table class="q-table">
@@ -559,7 +630,7 @@ const NODES = {
   p_roi_first: {
     stage:4, tag:'tag-p', tagLabel:'P — ROI First',
     title:"Run endpoint reconciliation live. Right now.",
-    sub:"Don't pitch the platform. Show the savings. Let the math close it.",
+    goal:"Don't pitch the platform. Show the savings number live. If the math lands, the decision becomes easy — the platform cost is already offset before you finish the call.",
     content:()=>`<div class="outcome-box ob-roi"><div class="ob-label">ROI first</div><div class="ob-action">"Let's run endpoint reconciliation live right now — 15 minutes. If we find savings that offset the platform cost, does that make this a straightforward decision for your board?"</div></div>`,
     choices:[{label:'Objection came up',next:'objections'},{label:'Start a new call flow',next:'pre_start'}]
   },
@@ -567,7 +638,7 @@ const NODES = {
   p_warm: {
     stage:4, tag:'tag-p', tagLabel:'P — Keep Warm',
     title:"Exit with a locked re-entry point.",
-    sub:"Don't leave it open-ended. Get a specific date before you hang up.",
+    goal:"Don't leave the call open-ended. A specific date to reconnect is the minimum outcome — without it, this deal disappears into a follow-up queue.",
     content:()=>`<div class="outcome-box ob-warm"><div class="ob-label">Keep warm</div><div class="ob-action">"This clearly resonates. Let me send the ROI one-pager and the Protect coverage breakdown — both are short. When's the right time to revisit — 30 or 60 days?"</div></div>`,
     choices:[{label:'Objection came up',next:'objections'},{label:'Start a new call flow',next:'pre_start'}]
   },
@@ -575,7 +646,7 @@ const NODES = {
   p_disqualify: {
     stage:4, tag:'tag-p', tagLabel:'P — Disqualify',
     title:"Be honest. Protect your pipeline.",
-    sub:"Low pain + 3+ BANT gaps = not a fit right now. Say it clearly. Leave the door open.",
+    goal:"A clean disqualification is better than a deal that stalls for 90 days. Say it directly, leave the door open for when the trigger event arrives, and move on.",
     content:()=>`<div class="outcome-box ob-disq"><div class="ob-label">Disqualify</div><div class="ob-action">"Honestly, I don't think this is the right fit for where you are right now — and I'd rather tell you that than waste your time. Can I check back when [trigger event]?"</div></div>`,
     choices:[{label:'Start a new call flow',next:'pre_start'}]
   },
@@ -583,7 +654,7 @@ const NODES = {
   objections: {
     stage:4, tag:'tag-obj', tagLabel:'Objection Handling',
     title:"Don't collapse. Address directly. Redirect.",
-    sub:"Click any objection to see the response.",
+    goal:"Acknowledge the concern, reframe it around the financial consequence of inaction, and redirect to the next step. Never fold — but never ignore either.",
     content:()=>{
       const objs=[
         {q:'"We already have tools that do this."',a:"Cork isn't replacing your stack — it's the layer that makes your stack defensible. If a claim gets denied because your tools weren't cross-referencing, your existing investment didn't protect you."},
@@ -641,24 +712,32 @@ function render(){
   let choicesHTML='';
   if(node.painChoices){
     choicesHTML=`<div class="pain-grid">${node.painChoices.map(c=>`
-      <button class="pain-card" onclick="navigate('${c.next}')">
+      <button class="pain-card${c.deprioritized ? ' deprioritized' : ''}" onclick="navigate('${c.next}')Got ">
         <div class="pc-title">${c.title}</div>
         <div class="pc-sub">${c.sub}</div>
       </button>`).join('')}</div>`;
   } else if(node.choices){
-    choicesHTML=`<div class="choices">${node.choices.map(c=>`
-      <button class="choice-btn" onclick="navigate('${c.next}')">
-        <span class="ch-arrow">›</span>
-        ${c.hint
-          ?`<span class="ch-wrap"><span class="ch-label">${c.label}</span><span class="ch-hint">${c.hint}</span></span>`
-          :`<span class="ch-label">${c.label}</span>`}
-      </button>`).join('')}</div>`;
+    const isSingle = node.choices.length === 1;
+    if(isSingle){
+      const c = node.choices[0];
+      choicesHTML = `<div class="proceed-wrap"><div class="proceed-label">Next step</div><button class="choice-btn-primary" onclick="navigate('${c.next}')"><span>${c.label}</span><span class="cta-arrow">→</span></button></div>`;
+    } else {
+      choicesHTML=`<div class="choices">${node.choices.map(c=>`
+        <button class="choice-btn" onclick="navigate('${c.next}')">
+          <span class="ch-arrow">›</span>
+          ${c.hint
+            ?`<span class="ch-wrap"><span class="ch-label">${c.label}</span><span class="ch-hint">${c.hint}</span></span>`
+            :`<span class="ch-label">${c.label}</span>`}
+        </button>`).join('')}</div>`;
+    }
   }
   const backBtn=navHistory.length?`<button class="nav-btn" onclick="goBack()">← Back</button>`:'';
+  const goalHTML = (node.goal && node.stage > 0) ? goalBlock(node.goal) : '';
   document.getElementById('card').innerHTML=`
     <span class="stage-tag ${node.tag}">${node.tagLabel}</span>
     <h2>${node.title}</h2>
     ${node.sub?`<p class="subtext">${node.sub}</p>`:''}
+    ${goalHTML}
     ${node.content()}
     ${choicesHTML}
     <div class="nav-row">${backBtn}</div>`;
