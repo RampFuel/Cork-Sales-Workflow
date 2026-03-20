@@ -476,7 +476,7 @@ const NODES = {
       {title:'Claims need to actually get paid',sub:'Tool compliance gaps, claim validation risk',next:'m_claim'},
       {title:'Need to justify cost / show ROI',sub:'PE/investor pressure, EBITDA sensitivity',next:'m_roi'},
       {title:'Differentiate / new revenue stream',sub:'Competitive pressure, upsell ceiling',next:'m_differentiate'},
-      {title:'Recent acquisition / M&A activity',sub:'Stack visibility gap, duplicate licenses',next:'m_ma'}
+      {title:'Recent acquisition / M&A activity',sub:'Stack visibility gap, duplicate licenses',next:'m_ma'},
       {title:'Cyber insurance / renewals',sub:'Manual questionnaires, claim risk, carrier confusion',next:'m_insurance', deprioritized: true}
     ]
   },
@@ -712,7 +712,7 @@ function render(){
   let choicesHTML='';
   if(node.painChoices){
     choicesHTML=`<div class="pain-grid">${node.painChoices.map(c=>`
-      <button class="pain-card${c.deprioritized ? ' deprioritized' : ''}" onclick="navigate('${c.next}')Got ">
+      <button class="pain-card${c.deprioritized ? ' deprioritized' : ''}" onclick="navigate('${c.next}')">
         <div class="pc-title">${c.title}</div>
         <div class="pc-sub">${c.sub}</div>
       </button>`).join('')}</div>`;
