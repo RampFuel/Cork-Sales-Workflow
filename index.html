@@ -180,6 +180,15 @@ body {
 .choice-btn-primary:hover .cta-arrow { color: #fff; }
 .choice-btn-primary .cta-arrow { font-size: 17px; font-weight: 700; flex-shrink: 0; color: var(--corange); transition: color 0.15s; }
 
+/* THREE PILLARS */
+.pillar-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 1.25rem; }
+@media (max-width: 520px) { .pillar-grid { grid-template-columns: 1fr; } }
+.pillar-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 12px 14px; cursor: pointer; text-align: center; font-family: var(--font-body); transition: border-color 0.15s, background 0.15s; width: 100%; }
+.pillar-card:hover { border-color: var(--corange); background: var(--corange-light); }
+.pillar-icon { font-size: 22px; margin-bottom: 8px; line-height: 1; }
+.pillar-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 5px; font-family: var(--font-head); }
+.pillar-sub { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
 .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1.25rem; }
 @media (max-width: 520px) { .pain-grid { grid-template-columns: 1fr; } }
 .pain-card { background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--corange); border-radius: var(--radius-sm); padding: 12px 14px; cursor: pointer; text-align: left; font-family: var(--font-body); transition: border-color 0.15s, background 0.15s; width: 100%; }
@@ -193,7 +202,7 @@ body {
 .outcome-box { border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 1rem; font-size: 13px; line-height: 1.6; }
 .ob-strong { background: var(--teal-light); border-left: 3px solid var(--teal); }
 .ob-multi  { background: var(--blue-light); border-left: 3px solid var(--blue); }
-.ob-roi    { background: #FFF8E2; border-left: 3px solid #FFCA37; color: #292527}
+.ob-roi    { background: #FFF8E2; border-left: 3px solid #FFCA37; color: #292527; }
 .ob-warm   { background: var(--bg2); border-left: 3px solid var(--border-strong); }
 .ob-disq   { background: #FCE8E6; border-left: 3px solid #D83300; }
 .ob-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; color: var(--text-muted); }
@@ -463,7 +472,67 @@ const NODES = {
           <div class="tr-body" id="tr-${i}"><strong style="color:var(--text)">Rep hears:</strong> ${it.a}<div class="tr-probe">Probe: ${it.probe}</div></div>
         </div>`).join('')}</div>`;
     },
-    choices:[{label:'Ready to route by dominant pain',next:'a_pain_routing'}]
+    choices:[{label:'Ready to route by dominant pain',next:'a_pillars'}]
+  },
+
+  a_pillars: {
+    stage:2, tag:'tag-a', tagLabel:'A — Three Pillars',
+    title:"Which of these matters most right now?",
+    goal:"Start here before pain routing. Let them self-select. Every answer funnels back to money — the pillar just sets the angle.",
+    content:()=>`
+      <div class="pillar-grid">
+        <button class="pillar-card" onclick="navigate('a_pain_routing_efficiency')">
+          <div class="pillar-icon">⚡</div>
+          <div class="pillar-title">Efficiency</div>
+          <div class="pillar-sub">Tool sprawl · Orphan licenses · QBR overhead · Context-switching</div>
+        </button>
+        <button class="pillar-card" onclick="navigate('a_pain_routing_revenue')">
+          <div class="pillar-icon">💰</div>
+          <div class="pillar-title">Revenue</div>
+          <div class="pillar-sub">IR cost exposure · Differentiation · New revenue stream · M&A</div>
+        </button>
+        <button class="pillar-card" onclick="navigate('a_pain_routing_security')">
+          <div class="pillar-icon">🛡</div>
+          <div class="pillar-title">Security</div>
+          <div class="pillar-sub">Claim validation · Insurance renewals · Tool compliance · Coverage gaps</div>
+        </button>
+      </div>
+      <p class="info-note">If they say "all three" or can't pick — that's fine. Route to the full pain table.</p>`,
+    choices:[{label:"They can't pick one — show the full pain table",next:'a_pain_routing'}]
+  },
+
+  a_pain_routing_efficiency: {
+    stage:2, tag:'tag-a', tagLabel:'A — Efficiency Path',
+    title:"What did they come in saying?",
+    goal:"Pick the dominant pain to set your demo path. The value prop shifts based on entry point — showing the wrong module wastes the demo and loses credibility.",
+    content:()=>'',
+    painChoices:[
+      {title:"Tools don't talk to each other",sub:'Tool sprawl, alert noise, no unified view',next:'m_sprawl'},
+      {title:'Need to justify cost / show ROI',sub:'PE/investor pressure, EBITDA sensitivity',next:'m_roi'}
+    ]
+  },
+
+  a_pain_routing_revenue: {
+    stage:2, tag:'tag-a', tagLabel:'A — Revenue Path',
+    title:"What did they come in saying?",
+    goal:"Pick the dominant pain to set your demo path. The value prop shifts based on entry point — showing the wrong module wastes the demo and loses credibility.",
+    content:()=>'',
+    painChoices:[
+      {title:'Differentiate / new revenue stream',sub:'Competitive pressure, upsell ceiling',next:'m_differentiate'},
+      {title:'Recent acquisition / M&A activity',sub:'Stack visibility gap, duplicate licenses',next:'m_ma'},
+      {title:'Cyber insurance / renewals',sub:'Manual questionnaires, claim risk, carrier confusion',next:'m_insurance',deprioritized:true}
+    ]
+  },
+
+  a_pain_routing_security: {
+    stage:2, tag:'tag-a', tagLabel:'A — Security Path',
+    title:"What did they come in saying?",
+    goal:"Pick the dominant pain to set your demo path. The value prop shifts based on entry point — showing the wrong module wastes the demo and loses credibility.",
+    content:()=>'',
+    painChoices:[
+      {title:'Claims need to actually get paid',sub:'Tool compliance gaps, claim validation risk',next:'m_claim'},
+      {title:'Cyber insurance / renewals',sub:'Manual questionnaires, claim risk, carrier confusion',next:'m_insurance',deprioritized:true}
+    ]
   },
 
   a_pain_routing: {
@@ -477,7 +546,7 @@ const NODES = {
       {title:'Need to justify cost / show ROI',sub:'PE/investor pressure, EBITDA sensitivity',next:'m_roi'},
       {title:'Differentiate / new revenue stream',sub:'Competitive pressure, upsell ceiling',next:'m_differentiate'},
       {title:'Recent acquisition / M&A activity',sub:'Stack visibility gap, duplicate licenses',next:'m_ma'},
-      {title:'Cyber insurance / renewals',sub:'Manual questionnaires, claim risk, carrier confusion',next:'m_insurance', deprioritized: true}
+      {title:'Cyber insurance / renewals',sub:'Manual questionnaires, claim risk, carrier confusion',next:'m_insurance',deprioritized:true}
     ]
   },
 
@@ -503,7 +572,7 @@ const NODES = {
     content:()=>`
       <div class="script-box">"So what I'm hearing is — the biggest challenge right now is [PAIN]. The financial consequence of that is [X]. If we can solve [PAIN] today, would that make this worth exploring?"</div>
       <p class="info-note">If you can't recite the pain in their exact words AND name the financial consequence, go back and probe. Do not move to demo without this locked.</p>`,
-    choices:[{label:'Pain locked. Route to the demo path.',next:'a_pain_routing'}]
+    choices:[{label:'Pain locked. Route to the demo path.',next:'a_pillars'}]
   },
 
   m_insurance: {
